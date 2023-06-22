@@ -7,6 +7,8 @@ import remarkMath from 'remark-math'
 import { cn } from '@/utils/shared'
 import { CodeBlock } from '@/components/codeblock'
 import ReactMarkdown, { Options } from 'react-markdown'
+import useLocalStorage from '@/hooks/use-local-storage'
+import { CONTENT } from "@/components/content"
 
 
 const MemoizedReactMarkdown: FC<Options> = memo(
@@ -18,13 +20,17 @@ const MemoizedReactMarkdown: FC<Options> = memo(
 
 
 export default function ChatMessage({ completion, ...props }) {
+  const [content, setContent] = useLocalStorage(
+    "content",
+    CONTENT,
+  );
 
   return (
     <div
-      className={cn('group relative mb-4 flex items-start md:-ml-12')}
+      className={cn('group relative h-full overflow-y-scroll mb-4 ')}
       {...props}
     >
-      <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
+      <div className="space-y-2 px-1 ">
         <MemoizedReactMarkdown
           className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0"
           remarkPlugins={[remarkGfm, remarkMath]}
@@ -64,7 +70,7 @@ export default function ChatMessage({ completion, ...props }) {
             }
           }}
         >
-          {completion}
+          {completion.length ? completion : CONTENT}
         </MemoizedReactMarkdown>
       </div>
     </div>
