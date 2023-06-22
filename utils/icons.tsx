@@ -1,5 +1,6 @@
 import {
   Coins,
+  Image,
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -8,17 +9,20 @@ interface IconProps {
   className?: string;
 }
 
-const icons: { [key: string]: React.ReactElement } = {
-  google: Coins
+const icons: { [key: string]: LucideIcon } = {
+  google: Coins,
+  media: Image
 };
 
 export const Icons: React.FC<IconProps> = ({ name, className }: IconProps) => {
-  const icon = icons[name]
+  const Icon = icons[name]
 
-  if (!icon) {
+  if (!Icon) {
     return null;
   }
 
-  return <span className={` block ${className}`}>{icon}</span>;
+  return <span className={` block ${className}`}>
+    <Icon />
+  </span>;
 };
 
