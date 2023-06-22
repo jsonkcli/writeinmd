@@ -26,7 +26,7 @@ export default function Editor() {
   console.log(completion)
 
   return (
-    <div className="flex flex-grow pt-8 h-full justify-between overflow-y-scroll">
+    <div className="flex w-full  pt-8 px-12 justify-between overflow-y-auto border-[0.5px] border-gray-300 rounded-md shadow-md shadow-white">
       <div className=" basis-2/6">
         <ChatPanel
           isLoading={isLoading}
@@ -38,10 +38,7 @@ export default function Editor() {
 
         />
       </div>
-      <div
-        className="">
         <ChatMessage completion={completion} />
-      </div>
     </div>
   )
 }
