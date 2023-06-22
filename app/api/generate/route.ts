@@ -2,8 +2,9 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { Configuration, OpenAIApi } from 'openai-edge'
 
-// import { auth } from '@/auth'
+
 export const runtime = 'edge'
+
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -14,18 +15,6 @@ const openai = new OpenAIApi(config);
 export async function POST(req: Request) {
   const json = await req.json()
   let { prompt: content } = json
-
-  console.log("called")
-
-  // remove line breaks,
-  // remove trailing slash,
-  // remove "🤖..." if present
-  // limit to 5000 characters
-  content = content
-    .replace(/\n/g, " ")
-    .replace(/\/$/, "")
-    .replace("🤖...", "")
-    .slice(0, 5000);
 
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
