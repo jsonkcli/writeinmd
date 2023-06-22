@@ -9,6 +9,7 @@ import { CodeBlock } from '@/components/codeblock'
 import ReactMarkdown, { Options } from 'react-markdown'
 import useLocalStorage from '@/hooks/use-local-storage'
 import { CONTENT } from "@/components/content"
+import { UseCompletionHelpers } from 'ai/react/dist'
 
 
 const MemoizedReactMarkdown: FC<Options> = memo(
@@ -18,8 +19,15 @@ const MemoizedReactMarkdown: FC<Options> = memo(
     prevProps.className === nextProps.className
 )
 
+export interface Props
+  extends Pick<
+    UseCompletionHelpers,
+    | 'completion'
+  > {
+  id?: string
+}
 
-export default function ChatMessage({ completion, ...props }) {
+export default function ChatMessage({ completion, ...props }: Props) {
   const [content, setContent] = useLocalStorage(
     "content",
     CONTENT,
