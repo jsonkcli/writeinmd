@@ -23,8 +23,6 @@ export default function Editor() {
     api: '/api/generate'
   });
 
-  console.log(completion)
-
   return (
     <div className="flex w-full  pt-8 px-12 justify-between overflow-y-auto border-[0.5px] border-gray-300 rounded-md shadow-md shadow-white">
       <div className=" basis-2/6">
