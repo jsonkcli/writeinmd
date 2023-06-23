@@ -24,7 +24,7 @@ export default function Editor() {
   });
 
   return (
-    <div className="flex w-full  pt-8 px-12 justify-between overflow-y-auto border-[0.5px] border-gray-300 rounded-md shadow-md shadow-white">
+    <div className="flex w-full  pt-8 md:px-12 justify-between overflow-y-auto md:border-[0.5px] border-gray-300 rounded-md md:shadow-md shadow-white">
       <div className=" basis-2/6">
         <ChatPanel
           isLoading={isLoading}

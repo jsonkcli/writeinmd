@@ -58,7 +58,7 @@ export function ChatPanel({
 
   return (
 
-    <div>
+    <div className="hidden md:block">
       <div className="border-b text-white flex flex-col gap-8">
         <p className="">Write a few sentences about your project.</p>
         <div className="">
